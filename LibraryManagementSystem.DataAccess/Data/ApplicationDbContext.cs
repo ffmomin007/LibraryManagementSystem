@@ -1,7 +1,7 @@
-﻿using LibraryManagementSystem.Web.Models;
+﻿using LibraryManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryManagementSystem.Web.Data
+namespace LibraryManagementSystem.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

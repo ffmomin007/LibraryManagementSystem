@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace LibraryManagementSystem.Web.Migrations
+namespace LibraryManagementSystem.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryTableToDb : Migration
