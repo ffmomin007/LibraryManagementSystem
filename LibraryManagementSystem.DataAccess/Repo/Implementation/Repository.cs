@@ -1,19 +1,13 @@
 ﻿using LibraryManagementSystem.DataAccess.Data;
-using LibraryManagementSystem.DataAccess.Repo.Implementation;
+using LibraryManagementSystem.DataAccess.Repo.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LibraryManagementSystem.DataAccess.Repo.Interface
+namespace LibraryManagementSystem.DataAccess.Repo.Implementation
 {
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
 
         public Repository(ApplicationDbContext context)
         {
@@ -28,7 +22,7 @@ namespace LibraryManagementSystem.DataAccess.Repo.Interface
         public T Get(int id)
         {
             T? entity = _context.Set<T>().Find(id);
-            return entity ;
+            return entity;
         }
 
         public T Get(Expression<Func<T, bool>> filter)
