@@ -7,7 +7,7 @@ namespace LibraryManagementSystem.Models
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(25, ErrorMessage = "Charecter must be less than 30")]
+        [Required, MaxLength(25, ErrorMessage = "Charecter must be less than 50")]
         [DisplayName("Category Name")]
         public string Name { get; set; }
 
