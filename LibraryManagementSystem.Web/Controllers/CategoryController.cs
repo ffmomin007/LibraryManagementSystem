@@ -1,5 +1,4 @@
 ﻿using LibraryManagementSystem.DataAccess.Data;
-using LibraryManagementSystem.DataAccess.Repo.Implementation;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,12 +26,12 @@ namespace LibraryManagementSystem.Web.Controllers
         [HttpPost]
         public IActionResult CreatePost(Category category)
         {
-            if( category.Name == category.DisplayOrder.ToString() )
+            if (category.Name == category.DisplayOrder.ToString())
             {
-                ModelState.AddModelError("name","Name and Order can't be same");
+                ModelState.AddModelError("name", "Name and Order can't be same");
             }
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _db.Categories.Add(category);
                 _db.SaveChanges();
@@ -41,20 +40,20 @@ namespace LibraryManagementSystem.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View("Create",category);
+            return View("Create", category);
 
         }
 
 
         public IActionResult Edit(int? id)
         {
-            if( id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
 
             var categoryInDb = _db.Categories.Find(id);
-            if( categoryInDb == null )
+            if (categoryInDb == null)
             {
                 return NotFound();
             }
@@ -65,7 +64,7 @@ namespace LibraryManagementSystem.Web.Controllers
 
         public IActionResult EditPost(Category category)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _db.Categories.Update(category);
                 _db.SaveChanges();
@@ -80,14 +79,14 @@ namespace LibraryManagementSystem.Web.Controllers
 
         public IActionResult Delete(int? id)
         {
-            if(id == null || id == 0)
-            { 
+            if (id == null || id == 0)
+            {
                 return NotFound();
             }
 
             Category? categoryInDb = _db.Categories.Find(id);
 
-            if(categoryInDb == null )
+            if (categoryInDb == null)
             {
                 return NotFound();
             }
@@ -97,8 +96,8 @@ namespace LibraryManagementSystem.Web.Controllers
 
         public IActionResult DeletePost(int? id)
         {
-             Category? categoryInDb = _db.Categories.Find(id);
-            if(categoryInDb == null )
+            Category? categoryInDb = _db.Categories.Find(id);
+            if (categoryInDb == null)
             {
                 return NotFound();
             }
